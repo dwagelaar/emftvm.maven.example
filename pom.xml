@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>be.denniswagelaar</groupId>
+	<artifactId>emftvm.maven.example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>emftvm.maven.example</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<atl.version>4.0.0-SNAPSHOT</atl.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<id>install-emftvm.ant.standalone</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/plugins/org.eclipse.m2m.atl.emftvm.ant/target/standalone/org.eclipse.m2m.atl.emftvm.ant.standalone-${atl.version}.jar</url>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<outputFileName>org.eclipse.m2m.atl.emftvm.ant.standalone.jar</outputFileName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Test EMFTVM stand-alone Ant/Maven integration -->
+						<id>Example.atl</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<taskdef
+									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
+									classpathref="maven.plugin.classpath" />
+								<emftvm.compile module="Example"
+									modulepath="${project.basedir}/transformations/"
+									outputpath="${project.build.directory}/" charset="UTF-8" />
+								<echo message="Loading metamodel UML" />
+								<emftvm.loadMetamodel name="UML"
+									uri="http://www.eclipse.org/uml2/5.0.0/UML" />
+								<echo message="Loading model Example" />
+								<emftvm.loadModel name="Example"
+									uri="file:/${project.basedir}/model/Example.uml" />
+								<echo
+									message="Running file:/${project.build.directory}/Example.emftvm" />
+								<emftvm.run
+									modulepath="file:/${project.build.directory}/" module="Example">
+									<metamodel name="UML" />
+									<inoutmodel name="Example" as="IN" />
+								</emftvm.run>
+								<echo message="Saving model EMFTVM-OUT" />
+								<emftvm.saveModel name="Example"
+									uri="file:/${project.build.directory}/Example.uml" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.equinox</groupId>
+						<artifactId>org.eclipse.equinox.common</artifactId>
+						<version>[3.6,3.10)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.common</artifactId>
+						<version>[2.4,3.0)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore</artifactId>
+						<version>[2.4,3.0)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+						<version>[2.4,3.0)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+						<version>[5.0.1,6.0)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.antlr</groupId>
+						<artifactId>antlr-runtime</artifactId>
+						<version>[3.0,3.1)</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.m2m.atl</groupId>
+						<artifactId>org.eclipse.m2m.atl.emftvm.ant.standalone</artifactId>
+						<version>${project.version}</version>
+						<scope>system</scope>
+						<systemPath>${project.build.directory}/org.eclipse.m2m.atl.emftvm.ant.standalone.jar</systemPath>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.googlecode.maven-download-plugin
+										</groupId>
+										<artifactId>
+											download-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.4.0,)
+										</versionRange>
+										<goals>
+											<goal>wget</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.3,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
