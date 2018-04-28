@@ -12,6 +12,6 @@ rule Annotate {
 		),
 		c : UML!Comment (
 			body <- 'Example comment for ' + s.name,
-			annotatedElement <- t
+			annotatedElement <- Sequence{t}
 		)
 }

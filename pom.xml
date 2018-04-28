@@ -19,25 +19,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.googlecode.maven-download-plugin</groupId>
-				<artifactId>download-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<executions>
-					<execution>
-						<id>install-emftvm.ant.standalone</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>wget</goal>
-						</goals>
-						<configuration>
-							<url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/plugins/org.eclipse.m2m.atl.emftvm.ant/target/standalone/org.eclipse.m2m.atl.emftvm.ant.standalone-${atl.version}.jar</url>
-							<outputDirectory>${project.build.directory}</outputDirectory>
-							<outputFileName>org.eclipse.m2m.atl.emftvm.ant.standalone.jar</outputFileName>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -56,6 +37,11 @@
 								<emftvm.compile module="Example"
 									modulepath="${project.basedir}/transformations/"
 									outputpath="${project.build.directory}/" charset="UTF-8" />
+								<echo message="Registering metamodel UML" />
+								<emftvm.registerMetamodel
+									packageClass="org.eclipse.uml2.uml.UMLPackage"
+									resourceFactoryClass="org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl"
+									fileExtension="uml" />
 								<echo message="Loading metamodel UML" />
 								<emftvm.loadMetamodel name="UML"
 									uri="http://www.eclipse.org/uml2/5.0.0/UML" />
@@ -98,6 +84,11 @@
 						<version>[2.4,3.0)</version>
 					</dependency>
 					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
+						<version>[2.4,3.0)</version>
+					</dependency>
+					<dependency>
 						<groupId>org.ow2.asm</groupId>
 						<artifactId>asm</artifactId>
 						<version>[5.0.1,6.0)</version>
@@ -110,9 +101,26 @@
 					<dependency>
 						<groupId>org.eclipse.m2m.atl</groupId>
 						<artifactId>org.eclipse.m2m.atl.emftvm.ant.standalone</artifactId>
-						<version>${project.version}</version>
-						<scope>system</scope>
-						<systemPath>${project.build.directory}/org.eclipse.m2m.atl.emftvm.ant.standalone.jar</systemPath>
+						<version>${atl.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.uml2</groupId>
+						<artifactId>uml</artifactId>
+						<version>[5.0,6.0)</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.eclipse.emf</groupId>
+								<artifactId>ecore</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.emf.ecore</groupId>
+								<artifactId>xmi</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.emf.mapping</groupId>
+								<artifactId>ecore2xml</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -183,4 +191,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.eclipse.org</id>
+			<name>ATL Repository</name>
+			<url>https://repo.eclipse.org/content/groups/atl/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
