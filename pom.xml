@@ -34,6 +34,7 @@
 								<taskdef
 									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
 									classpathref="maven.plugin.classpath" />
+								<mkdir dir="${project.build.directory}" />
 								<emftvm.compile module="Example"
 									modulepath="${project.basedir}/transformations/"
 									outputpath="${project.build.directory}/" charset="UTF-8" />
