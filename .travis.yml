@@ -1,3 +1,5 @@
 language: java
 install: true
-script: mvn verify
+script:
+- mvn verify
+- ant
