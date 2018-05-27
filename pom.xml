@@ -106,25 +106,6 @@
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
-											com.googlecode.maven-download-plugin
-										</groupId>
-										<artifactId>
-											download-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.4.0,)
-										</versionRange>
-										<goals>
-											<goal>wget</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
 											org.apache.maven.plugins
 										</groupId>
 										<artifactId>
