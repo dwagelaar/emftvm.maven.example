@@ -9,12 +9,33 @@
 	<packaging>jar</packaging>
 
 	<name>emftvm.maven.example</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/dwagelaar/emftvm.maven.example</url>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 1.0</name>
+			<url>http://www.eclipse.org/org/documents/epl-v10.html</url>
+		</license>
+	</licenses>
+	
+	<scm>
+		<url>https://github.com/dwagelaar/emftvm.maven.example</url>
+		<connection>scm:git:https://github.com/dwagelaar/emftvm.maven.example.git</connection>
+		<developerConnection>scm:git:ssh://github.com/dwagelaar/emftvm.maven.example.git</developerConnection>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<atl.version>4.0.0-SNAPSHOT</atl.version>
 	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.eclipse.org</id>
+			<name>ATL Repository</name>
+			<url>https://repo.eclipse.org/content/groups/atl/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<plugins>
@@ -139,11 +160,4 @@
 		</dependency>
 	</dependencies>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repo.eclipse.org</id>
-			<name>ATL Repository</name>
-			<url>https://repo.eclipse.org/content/groups/atl/</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
