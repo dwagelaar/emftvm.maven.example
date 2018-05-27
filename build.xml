@@ -2,7 +2,12 @@
 <project name="emftvm.maven.example" default="all">
 	<property name="project.basedir" value="${basedir}"/>
 	<property name="project.build.directory" value="${project.basedir}/target"/>
-	
+
+	<target name="clean">
+		<delete dir="target/lib" includes="*.jar">
+		</delete>
+	</target>
+
 	<target name="get">
 		<mkdir dir="target/lib" />
 		<get src="https://repo.maven.apache.org/maven2/org/eclipse/equinox/org.eclipse.equinox.common/3.6.0.v20100503/org.eclipse.equinox.common-3.6.0.v20100503.jar" dest="target/lib" skipexisting="true" />
@@ -16,7 +21,7 @@
 		<get src="https://repo.maven.apache.org/maven2/org/eclipse/core/runtime/3.10.0-v20140318-2214/runtime-3.10.0-v20140318-2214.jar" dest="target/lib" skipexisting="true" />
 		<get src="https://repo.maven.apache.org/maven2/org/eclipse/uml2/common/2.0.0-v20140602-0749/common-2.0.0-v20140602-0749.jar" dest="target/lib" skipexisting="true" />
 		<get src="https://repo.maven.apache.org/maven2/org/eclipse/uml2/types/2.0.0-v20140602-0749/types-2.0.0-v20140602-0749.jar" dest="target/lib" skipexisting="true" />
-		<get src="https://repo.eclipse.org/content/groups/atl/org/eclipse/m2m/atl/org.eclipse.m2m.atl.emftvm.ant.standalone/4.0.0-SNAPSHOT/org.eclipse.m2m.atl.emftvm.ant.standalone-4.0.0-20180428.203807-1.jar" dest="target/lib" skipexisting="true" />
+		<get src="https://repo.eclipse.org/content/groups/atl/org/eclipse/m2m/atl/org.eclipse.m2m.atl.emftvm.ant.standalone/4.0.0-SNAPSHOT/org.eclipse.m2m.atl.emftvm.ant.standalone-4.0.0-20180527.073138-6.jar" dest="target/lib" skipexisting="true" />
 	</target>
 
 	<target name="all" depends="get">
