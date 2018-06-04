@@ -26,7 +26,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<atl.version>4.0.0-SNAPSHOT</atl.version>
+		<atl.version>4.0.0</atl.version>
 	</properties>
 
 	<pluginRepositories>
