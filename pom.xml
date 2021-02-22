@@ -5,7 +5,7 @@
 
 	<groupId>be.denniswagelaar</groupId>
 	<artifactId>emftvm.maven.example</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>emftvm.maven.example</name>
@@ -26,7 +26,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<atl.version>4.1.0</atl.version>
+		<atl.version>4.3.0</atl.version>
     	<maven.compiler.source>1.6</maven.compiler.source>
     	<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
@@ -58,9 +58,9 @@
 									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
 									classpathref="maven.plugin.classpath" />
 								<mkdir dir="${project.build.directory}" />
-								<emftvm.compile module="Example"
-									modulepath="${project.basedir}/transformations/"
-									outputpath="${project.build.directory}/" charset="UTF-8" />
+								<emftvm.compile	outputpath="${project.build.directory}/" charset="UTF-8">
+									<moduleset dir="${project.basedir}/transformations/" includes="*.atl" />
+								</emftvm.compile>
 								<echo message="Registering metamodel UML" />
 								<emftvm.registerMetamodel
 									packageClass="org.eclipse.uml2.uml.UMLPackage"
@@ -82,6 +82,14 @@
 								<echo message="Saving model EMFTVM-OUT" />
 								<emftvm.saveModel name="Example"
 									uri="file:/${project.build.directory}/Example.uml" />
+								<echo
+									message="Batch running file:/${project.build.directory}/Example.emftvm" />
+								<emftvm.run
+									modulepath="file:/${project.build.directory}/" module="Example">
+									<metamodel name="UML" />
+									<inoutmodelset name="IN" dir="${project.basedir}/model"
+										outputdir="${project.build.directory}" includes="*.uml" />
+								</emftvm.run>
 							</tasks>
 						</configuration>
 					</execution>

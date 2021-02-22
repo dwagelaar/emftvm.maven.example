@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_btctkEf3Eei1iM72LRRh3g">
+  <packagedElement xmi:type="uml:Package" xmi:id="_dIehIEf3Eei1iM72LRRh3g" name="be">
+    <packagedElement xmi:type="uml:Package" xmi:id="_fZSGIEf3Eei1iM72LRRh3g" name="denniswagelaar">
+      <packagedElement xmi:type="uml:Package" xmi:id="_g6tcoEf3Eei1iM72LRRh3g" name="emftvm">
+        <packagedElement xmi:type="uml:Package" xmi:id="_i7qAsEf3Eei1iM72LRRh3g" name="maven">
+          <packagedElement xmi:type="uml:Package" xmi:id="_kXXJsEf3Eei1iM72LRRh3g" name="example">
+            <packagedElement xmi:type="uml:Class" xmi:id="_nFWZ8Ef3Eei1iM72LRRh3g" name="Example"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
