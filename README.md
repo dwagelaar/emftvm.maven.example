@@ -1,6 +1,6 @@
 # ATL/EMFTVM maven example
 
-[![Build Status](https://travis-ci.org/dwagelaar/emftvm.maven.example.svg?branch=master)](https://travis-ci.org/dwagelaar/emftvm.maven.example)
+[![Build Status](https://travis-ci.com/dwagelaar/emftvm.maven.example.svg?branch=master)](https://travis-ci.com/dwagelaar/emftvm.maven.example)
 
 ## Description
 
