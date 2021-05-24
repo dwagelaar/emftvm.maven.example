@@ -26,7 +26,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<atl.version>4.3.0</atl.version>
+		<atl.version>4.4.0</atl.version>
     	<maven.compiler.source>1.6</maven.compiler.source>
     	<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
@@ -117,12 +117,22 @@
 								<groupId>org.eclipse.emf.mapping</groupId>
 								<artifactId>ecore2xml</artifactId>
 							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.core</groupId>
+								<artifactId>runtime</artifactId>
+							</exclusion>
 						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.emf</groupId>
 						<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
 						<version>[2.4,3.0)</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.eclipse.core</groupId>
+								<artifactId>runtime</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 				</dependencies>
 			</plugin>
