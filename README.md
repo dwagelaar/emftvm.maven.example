@@ -1,6 +1,7 @@
 # ATL/EMFTVM maven example
 
-[![Build Status](https://travis-ci.com/dwagelaar/emftvm.maven.example.svg?branch=master)](https://travis-ci.com/dwagelaar/emftvm.maven.example)
+![Maven CI](https://github.com/dwagelaar/emftvm.maven.example/actions/workflows/maven.yml/badge.svg)
+![Ant CI](https://github.com/dwagelaar/emftvm.maven.example/actions/workflows/ant.yml/badge.svg)
 
 ## Description
 
@@ -11,7 +12,7 @@ This repo contains an example of how to use [ATL/EMFTVM](https://wiki.eclipse.or
 
 ## Prerequisites
 
-* JDK 8
+* JDK 17
 * Maven 3.0+
 
 ## Usage
