@@ -6,7 +6,7 @@
             <id>repo-eclipse-org-http-unblocker</id>
             <mirrorOf>repo.eclipse.org</mirrorOf>
             <name>repo.eclipse.org</name>
-            <url>https://repo.eclipse.org/</url>
+            <url>https://repo.eclipse.org/atl/</url>
         </mirror>
     </mirrors>
 </settings>
