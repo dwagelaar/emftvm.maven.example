@@ -44,6 +44,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
 				<executions>
 					<execution>
 						<!-- Test EMFTVM stand-alone Ant/Maven integration -->
@@ -53,7 +54,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target name="all">
+							<tasks>
 								<taskdef
 									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
 									classpathref="maven.plugin.classpath" />
@@ -90,7 +91,7 @@
 									<inoutmodelset name="IN" dir="${project.basedir}/model"
 										outputdir="${project.build.directory}" includes="*.uml" />
 								</emftvm.run>
-							</target>
+							</tasks>
 						</configuration>
 					</execution>
 				</executions>
