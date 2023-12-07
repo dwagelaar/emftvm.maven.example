@@ -26,9 +26,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<atl.version>4.8.0</atl.version>
-    	<maven.compiler.source>11</maven.compiler.source>
-    	<maven.compiler.target>11</maven.compiler.target>
+		<atl.version>4.9.0</atl.version>
+    	<maven.compiler.source>17</maven.compiler.source>
+    	<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<pluginRepositories>
@@ -53,7 +53,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<tasks>
+							<target name="all">
 								<taskdef
 									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
 									classpathref="maven.plugin.classpath" />
@@ -90,7 +90,7 @@
 									<inoutmodelset name="IN" dir="${project.basedir}/model"
 										outputdir="${project.build.directory}" includes="*.uml" />
 								</emftvm.run>
-							</tasks>
+							</target>
 						</configuration>
 					</execution>
 				</executions>
