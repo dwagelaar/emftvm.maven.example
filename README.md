@@ -5,7 +5,7 @@
 
 ## Description
 
-This repo contains an example of how to use [ATL/EMFTVM](https://wiki.eclipse.org/ATL/EMFTVM) in a maven build scenario. The repo contains an ATL model transformation module and a UML model:
+This repo contains an example of how to use [ATL/EMFTVM](https://github.com/eclipse-atl/atl/wiki/EMFTVM) in a maven build scenario. The repo contains an ATL model transformation module and a UML model:
 
 * `transformations/Example.atl`
 * `model/Example.uml`
