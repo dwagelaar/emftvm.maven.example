@@ -28,4 +28,4 @@ The compiled ATL transformation module and the transformed UML model can both be
   - `target/Example.emftvm`
   - `target/Example.uml`
 
-The `target/Example.emftvm` is the EMFTVM bytecode of the ATL transformation module, which can be read with an Eclipse IDE with ATL/EMFTVM 4.0 installed, and `target/Example.uml` is the same as the input UML model, with a single comment added.
+The `target/Example.emftvm` is the EMFTVM bytecode of the ATL transformation module, which can be read with an Eclipse IDE with ATL/EMFTVM >= v4.0.0 installed, and `target/Example.uml` is the same as the input UML model, with a single comment added.
